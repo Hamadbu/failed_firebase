@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,16 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCLDxwyONHQucztgJRRhaSqd72HnUBfxF8',
-    appId: '1:976609462041:web:f126f837644b5dd7eca788',
-    messagingSenderId: '976609462041',
-    projectId: 'connect-7cfe3',
-    authDomain: 'connect-7cfe3.firebaseapp.com',
-    storageBucket: 'connect-7cfe3.appspot.com',
-    measurementId: 'G-RKEBCSFVTG',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCxDnqBe_lnct_aaoDMujTrdBSaozF_A3o',
     appId: '1:976609462041:android:e9b6fd54cb907c5feca788',
@@ -68,14 +64,5 @@ class DefaultFirebaseOptions {
     projectId: 'connect-7cfe3',
     storageBucket: 'connect-7cfe3.appspot.com',
     iosBundleId: 'com.example.failedFirebase',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDvJ0QQvY-BcIUW-KNhgIQ9Wc_FDF4HrqY',
-    appId: '1:976609462041:ios:af874f37573aed68eca788',
-    messagingSenderId: '976609462041',
-    projectId: 'connect-7cfe3',
-    storageBucket: 'connect-7cfe3.appspot.com',
-    iosBundleId: 'com.example.failedFirebase.RunnerTests',
   );
 }
